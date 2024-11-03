@@ -1,0 +1,10 @@
+.gridLayout_item span {
+    text-decoration-color: rgba(224, 172, 51, 0);
+}
+.gridLayout_item:hover .gridLayout_poster {
+    transform: translateY(-8px);
+}
+.gridLayout_item:hover span {
+    color: rgb(224, 172, 51);
+    text-decoration-color: rgba(224, 172, 51, 1);
+}
