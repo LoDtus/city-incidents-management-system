@@ -4,7 +4,7 @@ import { PiPlusCircleBold } from "react-icons/pi";
 
 function AddIncident() {
     return (
-        <div className="z-20 flex justify-center basis-[40%]">
+        <div className="fixed z-[500] bottom-1 flex justify-center basis-[40%]">
             <button
                 className="flex items-center w-fit py-1 px-12 mr-1 rounded-md text-white bg-blue shadow-md
                 duration-200 active:scale-90">

@@ -7,7 +7,7 @@ function PopupIncidentNotification() {
         listIncident.push(
             <div 
                 key={i}
-                className='mb-2 mr-1 bg-white bg-opacity-60 py-1 pr-1 rounded-md shadow-md box-border flex
+                className='incidentNotification-item mb-2 mr-1 bg-white bg-opacity-60 py-1 pr-1 rounded-md shadow-md box-border flex
                 duration-200 hover:cursor-pointer hover:bg-opacity-100 active:scale-90'>
                 <div className='flex items-center'>
                     <FontAwesomeIcon icon={faFire}

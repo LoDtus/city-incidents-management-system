@@ -1,32 +1,30 @@
-import AddIncident from "./components/AddIncident";
+import "./map.css";
 import PopupFilter from "./components/PopupFilter";
-import MapController from "./components/MapController";
 import SearchBar from "./components/SearchBar";
 import PopupSearch from "./components/PopupSearch";
 import PopupIncidentSummary from "./components/PopupIncidentSummary";
 import PopupIncidentNotification from "./components/PopupIncidentNotification";
 import PopupMenuProfile from "./components/PopupMenuProfile";
+import LeafletMap from "./components/LeafletMap";
+import { useState } from "react";
 
 function MapLayout() {
+    const [ isPopupSearch, setIsPopupSearch ] = useState(false);
+
     return (
-        <div className="">
-            {/* <div className="bg-black w-[100vw] h-[100vh] absolute z-10"></div> */}
-            <img src="./assets/exp-map.jpg" alt="" className="bg-black w-[100vw] h-[100vh] absolute z-10"></img>
+        <div className="flex justify-center">
+            <img className="w-[100vw] h-[100vh] fixed right-0 top-0" src="assets/exp-map.jpg" alt="" />
+            {/* <LeafletMap/> */}
             <div className="h-[100vh] flex flex-col relative">
                 <SearchBar
                     // setOpenSignUp={setOpenSignUp}
                 />
                 <div className="grow">
-                    <PopupIncidentNotification/>
-                    <PopupIncidentSummary/>
+                    {/* <PopupIncidentNotification/> */}
+                    {/* <PopupIncidentSummary/> */}
                     {/* <PopupFilter/> */}
-                    {/* <PopupSearch/> */}
+                    <PopupSearch/>
                     {/* <PopupMenuProfile/> */}
-                </div>
-                <div className="w-full flex my-2">
-                    <div className="basis-[30%] ml-2"></div>
-                    <AddIncident/>
-                    <MapController/>
                 </div>
             </div>
         </div>
