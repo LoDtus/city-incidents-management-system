@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from "react-router-dom";
 
-function LayoutAccess() {
+export default function LayoutAccess() {
     const navigate = useNavigate();
     useEffect(() => {
         navigate('/access/signIn')
@@ -12,5 +12,4 @@ function LayoutAccess() {
             <Outlet/>
         </div>
     )
-}
-export default LayoutAccess
+};
