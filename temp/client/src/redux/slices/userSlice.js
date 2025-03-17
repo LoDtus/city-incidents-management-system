@@ -1,5 +1,6 @@
 import { setAuth } from "@/lib/utils/apiUtils";
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from 'js-cookie';
 
 const userSlice = createSlice({
     name: 'user',
@@ -37,6 +38,7 @@ const userSlice = createSlice({
                 sessionStorage.setItem("auth", JSON.stringify(data));
                 sessionStorage.setItem("role", action.payload.role);
             }
+            Cookies.set('role', action.payload.role, { path: '/', expires: 60 });
         },
     }
 });
