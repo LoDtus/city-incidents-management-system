@@ -7,6 +7,7 @@ import PopupIncidentNotification from "./components/PopupIncidentNotification";
 import PopupMenuProfile from "./components/PopupMenuProfile";
 import LeafletMap from "./components/LeafletMap";
 import { useState } from "react";
+import PopupAddIncident from "./components/PopupAddIncident";
 
 function MapLayout() {
     const [ isPopupSearch, setIsPopupSearch ] = useState(false);
@@ -20,10 +21,11 @@ function MapLayout() {
                     // setOpenSignUp={setOpenSignUp}
                 />
                 <div className="grow">
+                    <PopupAddIncident/>
                     {/* <PopupIncidentNotification/> */}
                     {/* <PopupIncidentSummary/> */}
                     {/* <PopupFilter/> */}
-                    <PopupSearch/>
+                    {/* <PopupSearch/> */}
                     {/* <PopupMenuProfile/> */}
                 </div>
             </div>

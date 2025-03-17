@@ -1,20 +1,19 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import NavigationBar from './features/NavigationBar/NavigationBar'
-import LayoutMap from './features/Map/LayoutMap'
-import LayoutAccess from './features/Access/LayoutAccess'
-import LayoutOverview from './features/Overview/LayoutOverview'
-import LayoutChat from './features/Chat/LayoutChat'
-import LayoutStatistic from './features/Statistic/LayoutStatistic'
-import LayoutArticle from './features/Article/LayoutArticle'
-import LayoutSaved from './features/Saved/LayoutSaved'
-import LayoutReport from './features/Report/LayoutReport'
-import LayoutTrash from './features/Trash/LayoutTrash'
-import LayoutSetting from './features/Setting/LayoutSetting'
+import NavigationBar from './features/navigationBar/NavigationBar';
+import LayoutMap from './features/map/LayoutMap';
+import LayoutAccess from './features/access/LayoutAccess';
+import LayoutChat from './features/chat/LayoutChat';
+import LayoutStatistic from './features/statistic/LayoutStatistic';
+import LayoutArticle from './features/article/LayoutArticle';
+import LayoutSaved from './features/saved/LayoutSaved';
+import LayoutReport from './features/report/LayoutReport';
+import LayoutTrash from './features/trash/LayoutTrash';
+import LayoutSetting from './features/setting/LayoutSetting';
 
-import SignUp from './features/Access/components/SignUp'
-import SignIn from './features/Access/components/SignIn'
-import ForgotPassword from './features/Access/components/ForgotPassword'
+import SignUp from './features/access/components/SignUp';
+import SignIn from './features/access/components/SignIn';
+import ForgotPassword from './features/access/components/ForgotPassword';
 
 export default function App() {
     return (
@@ -39,14 +38,11 @@ export default function App() {
                 <Route path="/weather"
                     element={<LayoutMap/>}
                 />
-                <Route path="/overview"
-                    element={<LayoutOverview/>}
+                <Route path="/statistic"
+                    element={<LayoutStatistic/>}
                 />
                 <Route path="/chat"
                     element={<LayoutChat/>}
-                />
-                <Route path="/statistic"
-                    element={<LayoutStatistic/>}
                 />
                 <Route path="/article"
                     element={<LayoutArticle/>}

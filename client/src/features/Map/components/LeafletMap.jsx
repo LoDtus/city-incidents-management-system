@@ -6,7 +6,7 @@ import { getTooltip } from "../common/mapUtils";
 import { data, dataMarkers, dataSizes, dataColors } from '../test/geoJSONData';
 import MapController from './MapController';
 import ContextMenu from './ContextMenu';
-import AddIncident from "./AddIncident";
+import AddIncidentBar from "./AddIncidentBar";
 
 // Lấy cái này làm gốc để test
 // Không sử dụng leaflet.glify mà sử dụng L.circle + for + render bằng canvas
@@ -259,7 +259,7 @@ export default function LeafletMap() {
                 </MapContainer>
             </div>
 
-            <AddIncident/>
+            <AddIncidentBar/>
             <ContextMenu
                 menuPos={menuPos}
                 menuRef={menuRef}

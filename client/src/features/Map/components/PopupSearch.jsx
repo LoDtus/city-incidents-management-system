@@ -1,5 +1,5 @@
 
-function PopupSearch() {
+export default function PopupSearch() {
     return (
         <div className='h-[75%] flex'>
             <div className='basis-[27%]'></div>
@@ -9,5 +9,4 @@ function PopupSearch() {
             <div className='basis-[27%]'></div>
         </div>
     )
-}
-export default PopupSearch;
+};

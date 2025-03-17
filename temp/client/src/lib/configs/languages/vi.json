@@ -1,0 +1,25 @@
+{
+    "access": {
+        "fullName": "Họ tên:",
+        "password": "Mật khẩu:",
+        "rePassword": "Nhập lại mật khẩu:",
+        "address": "Địa chỉ hiện tại:",
+        "rememberMe": "Duy trì đăng nhập",
+        "forgotPassword": "Quên mật khẩu?",
+        "hasAccount": "Bạn đã có tài khoản?",
+        "noAccount": "Bạn chưa có tài khoản?",
+        "createAccount": "Tạo tài khoản mới tại đây",
+        "signUp": "Đăng ký",
+        "signIn": "Đăng nhập",
+        "signOut": "Đăng xuất",
+        "noti_warn": "Cảnh báo",
+        "noti_success": "Thành công",
+        "warningEmail_null": "Vui lòng điền email của bạn!",
+        "warningPassword_null": "Vui lòng nhập đầy đủ mật khẩu!",
+        "warningRePassword_null": "Hãy xác nhận lại mật khẩu!",
+        "warningEmail_valid": "Email không hợp lệ!",
+        "warningPassword_valid": "Mật khẩu không hợp lệ!",
+        "warningRePassword_valid": "Mật khẩu xác nhận lại chưa chính xác!",
+        "warningEmail_exists": "Email này đã tồn tại!"
+    }
+}

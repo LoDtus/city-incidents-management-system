@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { getDayOfWeek } from '../../../utils/dateUtils'
+import { getDayOfWeek } from '../../../common/dateUtils'
 import { MessageSentFromMeNoImg, MessageSentFromMeWithImg, MessageSentFromOtherNoImg, MessageSentFromOtherWithImg } from "./Message";
 
 export default function ListMessage() {

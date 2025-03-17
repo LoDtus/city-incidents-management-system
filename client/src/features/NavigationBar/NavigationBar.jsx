@@ -1,6 +1,6 @@
 import './style.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faXmark, faMapLocationDot, faCloud, faPaste, faMessage, faChartSimple, faNewspaper, faBookmark, faPrint, faTrash, faGear } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faXmark, faMapLocationDot, faCloud, faChartSimple, faMessage, faComments, faLocationDot, faNewspaper, faUser, faGlobe, faBookmark, faPrint, faTrash, faDatabase, faGear } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect, useRef } from "react";
 import { useLocation, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -37,7 +37,7 @@ function NavigationBar() {
                 />
                 <div className="w-full flex">
                     <label htmlFor="toggleNaviagtion" title="Mở"
-                        className="w-fit mb-1">
+                        className="w-fit">
                         <FontAwesomeIcon
                             id="openNavigation"
                             className="w-fit p-2 rounded-md text-gray
@@ -45,7 +45,7 @@ function NavigationBar() {
                             icon={faBars} />
                     </label>
                     <label htmlFor="toggleNaviagtion" title="Đóng"
-                        className="w-fit mb-1">
+                        className="w-fit">
                         <FontAwesomeIcon
                             id="closeNavigation"
                             className="w-fit p-2 rounded-md text-gray
@@ -71,13 +71,13 @@ function NavigationBar() {
                         <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faCloud} />
                         <span>Thời tiết</span>
                     </Link>
-                    <Link to="/overview"
-                        title="Tổng quan"
-                        className={curPage === "/overview" 
+                    <Link to="/statistic"
+                        title="Dữ liệu"
+                        className={curPage === "/statistic" 
                         ? "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-blue bg-light-blue duration-200 hover:cursor-pointer" 
                         : "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}>
-                        <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faPaste} />
-                        <span>Tổng quan</span>
+                        <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faChartSimple} />
+                        <span>Dữ liệu</span>
                     </Link>
                     <Link to="/chat"
                         title="Trò chuyện"
@@ -87,13 +87,21 @@ function NavigationBar() {
                         <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faMessage} />
                         <span>Trò chuyện</span>
                     </Link>
-                    <Link to="/statistic"
-                        title="Dữ liệu"
-                        className={curPage === "/statistic" 
+                    <Link to="/chat"
+                        title="Trò chuyện"
+                        className={curPage === "/chat" 
                         ? "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-blue bg-light-blue duration-200 hover:cursor-pointer" 
                         : "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}>
-                        <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faChartSimple} />
-                        <span>Dữ liệu</span>
+                        <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faComments} />
+                        <span>Giải đáp</span>
+                    </Link>
+                    <Link to="/incident-management"
+                        title="Sự cố"
+                        className={curPage === "/chat" 
+                        ? "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-blue bg-light-blue duration-200 hover:cursor-pointer" 
+                        : "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}>
+                        <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faLocationDot} />
+                        <span>Sự cố</span>
                     </Link>
                     <Link to="/article"
                         title="Bài viết"
@@ -102,6 +110,22 @@ function NavigationBar() {
                         : "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}>
                         <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faNewspaper} />
                         <span>Bài viết</span>
+                    </Link>
+                    <Link to="/user-management"
+                        title="Người dùng"
+                        className={curPage === "/user-management" 
+                        ? "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-blue bg-light-blue duration-200 hover:cursor-pointer" 
+                        : "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}>
+                        <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faUser} />
+                        <span>Người dùng</span>
+                    </Link>
+                    <Link to="/map-data"
+                        title="Bản đồ"
+                        className={curPage === "/map-data" 
+                        ? "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-blue bg-light-blue duration-200 hover:cursor-pointer" 
+                        : "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}>
+                        <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faGlobe} />
+                        <span>Bản đồ</span>
                     </Link>
                     <Link to="/saved"
                         title="Đã lưu"
@@ -126,6 +150,14 @@ function NavigationBar() {
                         : "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}>
                         <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faTrash} />
                         <span>Thùng rác</span>
+                    </Link>
+                    <Link to="/backup"
+                        title="Sao lưu"
+                        className={curPage === "/backup"
+                        ? "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-blue bg-light-blue duration-200 hover:cursor-pointer" 
+                        : "item-navigation w-full py-3 px-10 mb-1 rounded-md flex items-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}>
+                        <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faDatabase} />
+                        <span>Sao lưu</span>
                     </Link>
                     <Link to="/setting"
                         title="Cài đặt"

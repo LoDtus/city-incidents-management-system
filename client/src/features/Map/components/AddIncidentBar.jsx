@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { PiPlusCircleBold } from "react-icons/pi";
 
-function AddIncident() {
+export default function AddIncidentBar() {
     return (
         <div className="fixed z-[500] bottom-1 flex justify-center basis-[40%]">
             <button
@@ -18,5 +18,4 @@ function AddIncident() {
             </button>
         </div>
     )
-}
-export default AddIncident
+};

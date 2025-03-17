@@ -1,0 +1,25 @@
+{
+    "access": {
+        "fullName": "Full name:",
+        "password": "Password:",
+        "rePassword": "Re-password:",
+        "address": "Your address:",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "hasAccount": "Already have an account?",
+        "noAccount": "Don't have an account?",
+        "createAccount": "Sign up",
+        "signUp": "Sign up",
+        "signIn": "Sign in",
+        "signOut": "Sign out",
+        "noti_warn": "Warning",
+        "noti_success": "Success",
+        "warningEmail_null": "Please enter your email!",
+        "warningPassword_null": "Please enter your password!",
+        "warningRePassword_null": "Please confirm your password!",
+        "warningEmail_valid": "Your email is invalid!",
+        "warningPassword_valid": "Your password is incorrect!",
+        "warningRePassword_valid": "Your confirmation password is incorrect!",
+        "warningEmail_exists": "Email already exists!"
+    }
+}

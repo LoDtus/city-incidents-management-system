@@ -1,0 +1,11 @@
+{
+    "noAuthGetEndpoints": [
+        "/users/check-email-exists/",
+        "/users/sign-in"
+    ],
+    "noAuthPostEndpoints": [
+        "/users/sign-up"
+    ],
+    "noAuthPutEndpoints": [],
+    "noAuthDeleteEndpoints": []
+}
