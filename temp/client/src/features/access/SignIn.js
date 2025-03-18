@@ -9,11 +9,13 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import userSlice from '@/redux/slices/userSlice';
+import { saveUserData } from '@/lib/utils/authenticationUtils';
+import useRedirectByRole from '@/lib/hooks/useRedirectByRole';
 
 export default function SignIn() {
     const t = useTranslations();
     const dispatch = useDispatch();
-    const router = useRouter();
+    const redirectByRole = useRedirectByRole();
 
     const [ email, setEmail ] = useState(null);
     const [ password, setPassword ] = useState(null);
@@ -47,27 +49,8 @@ export default function SignIn() {
             "rememberMe": rememberMe,
         }
         dispatch(userSlice.actions.setUser(userData));
+        saveUserData(response.id, response.email, response.password, response.active, response.roles[0].role, rememberMe);
         redirectByRole(userData.role);
-    }
-
-    function redirectByRole(role) {
-        switch (role) {
-            case 'ROLE_ADMIN':
-                router.push('/admin');
-                break;
-            case 'ROLE_STAFF':
-                router.push('/staff');
-                break;
-            case 'ROLE_MANAGER':
-                router.push('/manager');
-                break;
-            case 'ROLE_USER':
-                router.push('/user');
-                break;
-            default:
-                router.push('/');
-                break;
-        }
     }
     
     function exitLayout() {
