@@ -6,13 +6,12 @@ import { getSetting } from "@/redux/selectors";
 import settingSlice from "@/redux/slices/settingSlice";
 import { useEffect, useState } from "react";
 import userSlice from "@/redux/slices/userSlice";
-import { saveUserData } from "@/lib/utils/authenticationUtils";
 import Cookies from "js-cookie";
 import useRedirectByRole from "@/lib/hooks/useRedirectByRole";
 
 // Nghien cuu, su dung layout de tai sử dụng component
 // Thông báo khi người dùng sắp hết hạn cookies
-export default function GuestLayout() {
+export default function Home() {
     const t = useTranslations();
     const dispatch = useDispatch();
     const language = useSelector((state) => getSetting(state).language);
@@ -22,7 +21,9 @@ export default function GuestLayout() {
         // const token = Cookies.get('token');
         const auth = JSON.parse(sessionStorage.getItem('auth')) || JSON.parse(localStorage.getItem('auth'));
         const role = Cookies.get('role');
-        if (!auth || !role) return;
+        console.log(1);
+        
+        if (!auth || !role) return redirectByRole(null);
 
         const userData = {
             "id": auth.id,
@@ -36,20 +37,9 @@ export default function GuestLayout() {
     }, []);
 
     return (
-        <div>
-            <Link href="/access/signIn" prefetch={true}
-                className="border"
-            >
-                Đăng nhập
-            </Link>
-            
-            <button
-                className="border"
-                onClick={() => dispatch(settingSlice.actions.setLanguage(language == "vi" ? "en" : "vi"))}
-            >
-                {language === "vi" ? "en" : "vi"}
-            </button>
-            <div>{t("access.signIn")}</div>
+        <div className="app">
+            {/* <Link href="/access/signIn" prefetch={true} className="border">Đăng nhập</Link>
+            <button className="border" onClick={() => dispatch(settingSlice.actions.setLanguage(language == "vi" ? "en" : "vi"))}>{language === "vi" ? "en" : "vi"}</button> */}
         </div>
     );
 };

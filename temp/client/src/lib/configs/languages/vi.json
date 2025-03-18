@@ -21,5 +21,25 @@
         "warningPassword_valid": "Mật khẩu không hợp lệ!",
         "warningRePassword_valid": "Mật khẩu xác nhận lại chưa chính xác!",
         "warningEmail_exists": "Email này đã tồn tại!"
+    },
+    "navigation": {
+        "open": "Mở",
+        "close": "Đóng",
+        "map": "Bản đồ",
+        "statistic": "Thống kê",
+        "notification": "Thông báo",
+        "chat": "Trò chuyện",
+        "support": "Hỗ trợ",
+        "article": "Bài viết",
+        "incident-management": "Quản lý sự cố",
+        "member-management": "Các thành viên",
+        "user-management": "Quản lý người dùng",
+        "organization-management": "Các tổ chức",
+        "geographic-data": "Dữ liệu địa lý",
+        "report": "Báo cáo",
+        "saved": "Đã lưu",
+        "trash": "Đã xóa",
+        "setting": "Cài đặt",
+        "profile": "Trang cá nhân"
     }
 }
