@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSetting } from "@/redux/selectors";
 import settingSlice from "@/redux/slices/settingSlice";
 import { useEffect, useState } from "react";
+import SignOut from "@/features/access/SignOut";
 
-// Lam not sign in
 // Nghien cuu, su dung layout de tai sử dụng component
 // useEffect lấy và gán dữ liệu từ cookies, local, session vào redux khi vừa truy caapk → đổi hướng
 // Tạo nút đăng xuất + xóa toàn bộ dữ liệu cũ
@@ -37,6 +37,7 @@ export default function GuestLayout() {
                 {language === "vi" ? "en" : "vi"}
             </button>
             <div>{t("access.signIn")}</div>
+            <SignOut/>
         </div>
     );
 };
