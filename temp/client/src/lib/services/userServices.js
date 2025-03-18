@@ -16,9 +16,9 @@ export async function checkEmailexists(email) {
 }
 
 export async function signIn(email, password) {
-    const response = await instance.get(`/api/users/sign-in`, {
+    const response = await instance.post(`/api/users/sign-in`, {
         "email": email,
-        "password": password,
+        "password": `{noop}${password}`,
     });
     return response.data;
 }

@@ -27,13 +27,7 @@ const userSlice = createSlice({
                 localStorage.setItem("auth", JSON.stringify(data));
                 localStorage.setItem("role", action.payload.role);
                 // localStorage.setItem("token", "jwt_token");
-
-                // res.cookie('token', 'jwt_token', {
-                //     httpOnly: true,
-                //     secure: process.env.NODE_ENV === 'production', // Chỉ gửi cookie qua HTTPS trong môi trường production
-                //     sameSite: 'Strict', // Bảo vệ khỏi CSRF
-                //     maxAge: 3600000 // Cookie hết hạn sau 1 giờ
-                // });
+                // luu voi cookies
             } else if (!action.payload.rememberMe && typeof window !== 'undefined') {
                 sessionStorage.setItem("auth", JSON.stringify(data));
                 sessionStorage.setItem("role", action.payload.role);

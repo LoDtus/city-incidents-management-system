@@ -63,7 +63,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/users/get-all").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/api/users/get-by-id/{id}").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/api/users/check-email-exists/{email}").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/users/sign-in").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/users/sign-in").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users/sign-up").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/api/users/update").hasAnyRole("USER", "STAFF", "MANAGER", "ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/api/users/delete/{id}").hasAnyRole("USER", "STAFF", "MANAGER", "ADMIN")

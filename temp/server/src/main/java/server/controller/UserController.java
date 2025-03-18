@@ -42,7 +42,7 @@ public class UserController {
         return ResponseEntity.ok(true);
     }
 
-    @GetMapping("/sign-in")
+    @PostMapping("/sign-in")
     public ResponseEntity<Object> signIn(@RequestBody User user) {
         User result = userService.findByEmail(user.getEmail());
         if (result == null) {

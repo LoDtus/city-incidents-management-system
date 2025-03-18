@@ -1,7 +1,7 @@
 "use client";
 import { Input, Button, Checkbox, notification } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { useEffect, useState, createContext, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Link from "next/link";
 import { useTranslations } from 'next-intl';
 import { isValidEmail } from '@/lib/utils/validationUtils';
@@ -73,6 +73,7 @@ export default function SignUp() {
         if (rePassword !== password) return openNotification(undefined, t("access.warningRePassword_valid"), undefined);
         
         const response = await signUp(email, password);
+        // handle error
         const userData = {
             "id": response.id,
             "email": response.email,
@@ -82,31 +83,30 @@ export default function SignUp() {
             "rememberMe": rememberMe,
         }
         dispatch(userSlice.actions.setUser(userData));
-        redirect(userData.role);
+        redirectByRole(userData.role);
     }
 
-    function redirect(role) {
-        router.push('/admin');
-        // switch (role) {
-        //     case 'ROLE_ADMIN':
-        //         router.push('/admin');
-        //         break;
-        //     case 'ROLE_STAFF':
-        //         router.push('/staff');
-        //         break;
-        //     case 'ROLE_MANAGER':
-        //         router.push('/manager');
-        //         break;
-        //     case 'ROLE_USER':
-        //         router.push('/user');
-        //         break;
-        //     default:
-        //         router.push('/');
-        //         break;
-        // }
+    function redirectByRole(role) {
+        switch (role) {
+            case 'ROLE_ADMIN':
+                router.push('/admin');
+                break;
+            case 'ROLE_STAFF':
+                router.push('/staff');
+                break;
+            case 'ROLE_MANAGER':
+                router.push('/manager');
+                break;
+            case 'ROLE_USER':
+                router.push('/user');
+                break;
+            default:
+                router.push('/');
+                break;
+        }
     }
 
-    function existsLayout() {
+    function exitLayout() {
         
     }
 
@@ -115,7 +115,7 @@ export default function SignUp() {
             {contextHolder}
             <div
                 className='fixed w-[100vw] h-[100vh] top-0 left-0 bg-black opacity-50 z-40'
-                onClick={() => existsLayout()}></div>
+                onClick={() => exitLayout()}></div>
             <div className='flex flex-col p-6 z-50 rounded-md bg-white'>
             <span className='flex justify-center font-xl font-bold mb-4 text-2xl'>{t("access.signUp")}</span>
                 <div className="flex mb-2">

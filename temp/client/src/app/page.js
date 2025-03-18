@@ -6,8 +6,11 @@ import { getSetting } from "@/redux/selectors";
 import settingSlice from "@/redux/slices/settingSlice";
 import { useEffect, useState } from "react";
 
-// Thiết lập đăng nhập, đăng ký
-// Test giao diện với các quyền khác nhau
+// Lam not sign in
+// Nghien cuu, su dung layout de tai sử dụng component
+// useEffect lấy và gán dữ liệu từ cookies, local, session vào redux khi vừa truy caapk → đổi hướng
+// Tạo nút đăng xuất + xóa toàn bộ dữ liệu cũ
+// Thông báo khi người dùng sắp hết hạn cookies
 export default function GuestLayout() {
     const t = useTranslations();
     const dispatch = useDispatch();
