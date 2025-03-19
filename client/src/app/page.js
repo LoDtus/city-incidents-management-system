@@ -21,8 +21,6 @@ export default function Home() {
         // const token = Cookies.get('token');
         const auth = JSON.parse(sessionStorage.getItem('auth')) || JSON.parse(localStorage.getItem('auth'));
         const role = Cookies.get('role');
-        console.log(1);
-        
         if (!auth || !role) return redirectByRole(null);
 
         const userData = {

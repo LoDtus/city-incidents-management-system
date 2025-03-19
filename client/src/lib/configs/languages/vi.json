@@ -2,7 +2,7 @@
     "access": {
         "fullName": "Họ tên:",
         "password": "Mật khẩu:",
-        "rePassword": "Nhập lại mật khẩu:",
+        "rePassword": "Gõ lại mật khẩu:",
         "address": "Địa chỉ hiện tại:",
         "rememberMe": "Duy trì đăng nhập",
         "forgotPassword": "Quên mật khẩu?",

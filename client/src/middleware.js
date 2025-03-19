@@ -13,7 +13,7 @@ export function middleware(req) {
 
     // Nếu người dùng không có role hoặc role không hợp lệ, chỉ cho phép vào trang chính
     if (!role || !roleRoutes[role]) {
-        return NextResponse.redirect(new URL('/guest', req.url));
+        return NextResponse.redirect(new URL('/guest/map', req.url));
     }
 
     // Nếu role hợp lệ nhưng user cố gắng truy cập vào route không thuộc về họ

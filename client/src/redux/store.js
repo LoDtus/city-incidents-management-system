@@ -8,6 +8,7 @@ const appReducer = combineReducers({
     properties: propertiesSlice.reducer,
     setting: settingSlice.reducer,
     user: userSlice.reducer,
+    profile: propertiesSlice.reducer,
 });
 
 const rootReducer = (state, action) => {

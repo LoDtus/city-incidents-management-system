@@ -6,9 +6,10 @@
     display: none;
 }
 .item-navigation {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
+
 .item-navigation span {
     opacity: 0;
     visibility: hidden;
@@ -26,8 +27,9 @@
     display: inline-block;
 }
 #toggleNaviagtion:checked ~ .navigationBar .item-navigation {
+    justify-content: left;
     padding-left: 40px;
-    padding-right: 40px;
+    padding-right: 45px;
 }
 #toggleNaviagtion:checked ~ .navigationBar span {
     opacity: 1;
@@ -36,5 +38,11 @@
     font-size: 16px;
 }
 #toggleNaviagtion:checked ~ .navigationBar .iconNavigation {
-    margin-right: 12px;
+    margin-right: 10px;
+}
+#toggleNaviagtion:checked ~ .navigationBar img {
+    margin-right: 6px;
+}
+#toggleNaviagtion:checked ~ .navBar-profile div {
+    padding-right: 10px !important;
 }

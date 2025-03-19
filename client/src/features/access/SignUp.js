@@ -1,16 +1,19 @@
 "use client";
-import { Input, Button, Checkbox, notification } from 'antd';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { useEffect, useState, useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Input, Button, Checkbox, notification, Typography } from'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from'@ant-design/icons';
+import { useEffect, useState, useRef } from'react';
 import Link from "next/link";
-import { useTranslations } from 'next-intl';
-import { isValidEmail } from '@/lib/utils/validationUtils';
-import { checkEmailexists, signUp } from '@/lib/services/userServices';
-import { useDispatch } from 'react-redux';
-import userSlice from '@/redux/slices/userSlice';
-import { useRouter } from 'next/navigation';
-import { saveUserData } from '@/lib/utils/authenticationUtils';
-import useRedirectByRole from '@/lib/hooks/useRedirectByRole';
+import { useTranslations } from'next-intl';
+import { isValidEmail } from'@/lib/utils/validationUtils';
+import { checkEmailexists, signUp } from'@/lib/services/userServices';
+import { useDispatch } from'react-redux';
+import userSlice from'@/redux/slices/userSlice';
+import { saveUserData } from'@/lib/utils/authenticationUtils';
+import useRedirectByRole from'@/lib/hooks/useRedirectByRole';
+
+const { Text } = Typography;
 
 export default function SignUp() {
     const t = useTranslations();
@@ -28,7 +31,7 @@ export default function SignUp() {
     const isClicking = useRef(false);
     const [ api, contextHolder ] = notification.useNotification();
 
-    function openNotification(message = t("access.noti_warn"), description = '', placement = 'topLeft') {
+    function openNotification(message = t("access.noti_warn"), description ='', placement ='topLeft') {
         api.warning({message, description, placement});
     };
 
@@ -89,39 +92,44 @@ export default function SignUp() {
         redirectByRole(userData.role);
     }
 
-    function exitLayout() {
-        
-    }
-
     return (
         <div className='w-[100vw] h-[100vh] top-0 left-0 flex items-center justify-center'>
             {contextHolder}
-            <div
-                className='fixed w-[100vw] h-[100vh] top-0 left-0 bg-black opacity-50 z-40'
-                onClick={() => exitLayout()}></div>
-            <div className='flex flex-col p-6 z-50 rounded-md bg-white'>
-            <span className='flex justify-center font-xl font-bold mb-4 text-2xl'>{t("access.signUp")}</span>
-                <div className="flex mb-2">
-                    <label className='basis-[30%] hover:cursor-pointer' htmlFor="signUp-fullName">{t("access.fullName")}</label>
+            <div className='h-[95%] flex flex-col p-6 z-50 rounded-md bg-white shadow-lg'>
+                <div className='w-full flex justify-end'>
+                    <Link href='/guest/map'
+                        className='w-[33px] aspect-square flex items-center justify-center rounded-md text-gray
+                        duration-200 hover:text-black hover:bg-light-gray active:scale-90'>
+                            <FontAwesomeIcon icon={faXmark} />
+                    </Link>
+                </div>
+                <span className='flex justify-center font-xl font-bold mb-4 text-2xl'>{t("access.signUp")}</span>
+                <div className="flex items-center mb-1">
+                    <label className='basis-[30%] w-[180px] hover:cursor-pointer' htmlFor="signUp-fullName">{t("access.fullName")}</label>
                     <Input
+                        className='basis-[70%]'
                         id='signUp-fullName'
                         placeholder='Aa'
                         onChange={(e) => setFullname(e.target.value.trim())}
+                        maxLength={100}
+                        showCount
                         allowClear
                     />
                 </div>
-                <div className="flex mb-2">
-                    <label className='basis-[30%] hover:cursor-pointer' htmlFor="signUp-email">Email:</label>
+                <div className="flex items-center mb-1">
+                    <label className='basis-[30%] w-[180px] hover:cursor-pointer' htmlFor="signUp-email">Email:</label>
                     <Input
+                        className='basis-[70%]'
                         id='signUp-email'
                         placeholder='example@email.com'
                         onBlur={(e) => handleEmail(e.target.value.trim())}
                         allowClear
                     />
                 </div>
-                <div className="flex mb-2">
-                    <label className='basis-[30%] hover:cursor-pointer' htmlFor="signUp-password">{t("access.password")}</label>
+                <div className="flex items-center mb-1">
+                    <label className='basis-[30%] w-[180px] hover:cursor-pointer' htmlFor="signUp-password">{t("access.password")}</label>
                     <Input.Password
+                        className='basis-[70%]'
                         id='signUp-password'
                         placeholder='Aa'    
                         onChange={(e) => setPassword(e.target.value.trim())}
@@ -130,9 +138,10 @@ export default function SignUp() {
                         showCount
                     />
                 </div>
-                <div className="flex mb-2">
-                    <label className='basis-[30%] hover:cursor-pointer' htmlFor="signUp-rePassword">{t("access.rePassword")}</label>
+                <div className="flex items-center mb-1">
+                    <label className='basis-[30%] w-[180px] hover:cursor-pointer' htmlFor="signUp-rePassword">{t("access.rePassword")}</label>
                     <Input.Password
+                        className='basis-[70%]'
                         id='signUp-rePassword'
                         placeholder='Aa'
                         onBlur={(e) => handleRePassword(e.target.value.trim())}
@@ -143,9 +152,10 @@ export default function SignUp() {
                         showCount
                     />
                 </div>
-                <div className="flex mb-2">
-                    <label className='basis-[30%] hover:cursor-pointer' htmlFor="signUp-address">{t("access.address")}</label>
+                <div className="flex items-center mb-2">
+                    <label className='basis-[30%] w-[180px] hover:cursor-pointer' htmlFor="signUp-address">{t("access.address")}</label>
                     <Input
+                        className='basis-[70%]'
                         id='signUp-address'
                         placeholder='Aa'
                         onChange={(e) => setAddress(e.target.value.trim())}
@@ -153,28 +163,33 @@ export default function SignUp() {
                     />
                 </div>
 
-                <div className="flex items-center mb-2 h-8 ">
-                    <Checkbox
-                        onClick={(e) => setRememberMe(e.target.checked)}
-                    >
-                        {t("access.rememberMe")}
-                    </Checkbox>
-                    {/* forgot password */}
+                <div className='grow border rounded-md flex items-center justify-center'>
+                    map
                 </div>
 
-                <Button
-                    className=''
-                    onClick={() => getSignUp()}
-                    type="primary"
-                >
-                    {t("access.signUp")}
+                <div className="flex items-center my-1">
+                    <Checkbox onClick={(e) => setRememberMe(e.target.checked)}>
+                        {t("access.rememberMe")}
+                    </Checkbox>
+                    <div className='grow'></div>
+                    <Link href='/access/forgot-password' className='text-blue'>
+                        <Button className='!px-0' type="link">
+                            {t("access.forgotPassword")}
+                        </Button>
+                    </Link>
+                </div>
+
+                <Button type="primary" onClick={() => getSignUp()}>
+                    <span className='font-semibold'>
+                        {t("access.signUp")}
+                    </span>
                 </Button>
                 <div>
-                    <span>{t("access.hasAccount")}</span>
-                    <Link href='/access/signIn' 
-                        className='text-blue ml-2'
-                    >
-                        {t("access.signIn")}
+                    <Text>{t("access.hasAccount")}</Text>
+                    <Link href='/access/sign-in' className='text-blue ml-2'>
+                        <Button className='!px-0' type="link">
+                            {t("access.signIn")}
+                        </Button>
                     </Link>
                 </div>
             </div>

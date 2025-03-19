@@ -14,12 +14,9 @@ function MapLayout() {
 
     return (
         <div className="flex justify-center">
-            {/* <img className="w-[100vw] h-[100vh] fixed right-0 top-0" src="assets/exp-map.jpg" alt="" /> */}
             <LeafletMap/>
             <div className="h-[100vh] flex flex-col relative">
-                <SearchBar
-                    // setOpenSignUp={setOpenSignUp}
-                />
+                <SearchBar/>
                 <div className="grow">
                     <PopupAddIncident/>
                     {/* <PopupIncidentNotification/> */}

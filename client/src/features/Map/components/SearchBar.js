@@ -1,9 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { FiFilter, FiMessageSquare } from "react-icons/fi";
-import { FaRegBell } from "react-icons/fa";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { FiFilter } from "react-icons/fi";
+import { Button, Tooltip } from 'antd';
+import { useState } from 'react';
 
-function SearchBar({}) {
+function SearchBar() {
+    const [position, setPosition] = useState('end');
+
     return (
         <div className="w-[100vw] flex">
             <div className="basis-[30%] ml-2 mr-1 my-2"></div>
@@ -19,41 +22,17 @@ function SearchBar({}) {
                     className="flex items-center rounded-r-full border-l-0 py-2 pr-5"
                     htmlFor="map_searchBar">
                     <FontAwesomeIcon className="w-[20px] h-[20px] text-dark-gray" icon={faMagnifyingGlass} />
+                    <Button
+                        className='flex justify-center items-center w-full h-full relative'
+                        shape="circle"
+                        icon={
+                            <FiFilter
+                                className='mt-[5px]'
+                                size={18}/>
+                        }
+                    />
+                    
                 </label>
-            </div>
-
-            <div className="z-20 basis-[30%] ml-1 mr-2 my-2 flex justify-between items-center rounded-full shadow-md bg-white">
-                <button
-                    className="flex items-center rounded-full mx-1 py-1 px-6 text-dark-gray box-border border-2 border-dark-gray
-                    duration-200 hover:bg-light-gray hover:text-black hover:border-black active:scale-90">
-                    <FiFilter size={20} className=""/>
-                    <span className="ml-2 font-semibold">Mặc định</span>
-                </button>
-
-                <div className="flex items-center">
-                    <button 
-                        className="w-[30px] h-[30px] mx-2 rounded-full flex justify-center items-center text-dark-gray
-                        duration-200 hover:bg-light-gray hover:text-black active:scale-90">
-                        <FaRegBell size={18} strokeWidth={2.5}/>
-                    </button>
-                    <button 
-                        className="w-[30px] h-[30px] mx-2 rounded-full flex justify-center items-center text-dark-gray
-                        duration-200 hover:bg-light-gray hover:text-black active:scale-90">
-                        <FiMessageSquare size={18} strokeWidth={2.5}/>
-                    </button>
-                    <div to='/access'
-                        className="py-1 px-6 mx-1 rounded-full font-semibold text-dark-gray box-border border-2 border-dark-gray
-                        duration-200 hover:text-black hover:bg-light-gray hover:border-black active:scale-90"
-                        >
-                        Đăng nhập
-                    </div>
-                    {/* <button>
-                        <img
-                            className="w-[30px] h-[30px] mx-1 rounded-full"
-                            src="./assets/exp-ava.jpg"
-                            alt="" />
-                    </button> */}
-                </div>
             </div>
         </div>
     )

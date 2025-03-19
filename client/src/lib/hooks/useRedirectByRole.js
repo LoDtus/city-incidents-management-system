@@ -7,19 +7,19 @@ export default function useRedirectByRole() {
     const redirectByRole = useCallback((role) => {
         switch (role) {
             case 'ROLE_ADMIN':
-                router.push('/admin');
+                router.push('/admin/map');
                 break;
             case 'ROLE_MANAGER':
-                router.push('/manager');
+                router.push('/manager/map');
                 break;
             case 'ROLE_STAFF':
-                router.push('/staff');
+                router.push('/staff/map');
                 break;
             case 'ROLE_USER':
-                router.push('/user');
+                router.push('/user/map');
                 break;
             default:
-                router.push('/guest');
+                router.push('/guest/map');
                 break;
         }
     }, [router]);
