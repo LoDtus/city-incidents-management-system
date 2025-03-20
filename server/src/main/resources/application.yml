@@ -1,18 +1,19 @@
-server.port: 8080
+server.port: ${SERVER_PORT}
 spring:
-  application.name: server
+  config.import: optional:file:./env.properties
+  application.name: ${APPLICATION_NAME}
   datasource:
-    url: jdbc:mysql://localhost:3308/cims-db
-    username: root
-    password: root
+    url: ${MYSQL_URL}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
 #    hibernate-ddl-auto: update
     show-sql: true
-  data.mongodb.uri: mongodb://localhost:27017/cims-db
+  data.mongodb.uri: ${MONGODB_URI}
   security.user:
-    name: root
-    password: root
+    name: ${SECURITY_USERNAME}
+    password: ${SECURITY_PASSWORD}
 #  logging.level.org.springframework:
 #    security: DEBUG
 #    web:
