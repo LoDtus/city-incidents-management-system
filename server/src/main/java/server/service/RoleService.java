@@ -1,6 +1,6 @@
 package server.service;
 
-import server.entity.Role;
+import server.entity.mysql.Role;
 
 import java.util.List;
 

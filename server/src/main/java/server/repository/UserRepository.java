@@ -3,7 +3,7 @@ package server.repository;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.NonNull;
-import server.entity.User;
+import server.entity.mysql.User;
 
 import java.util.List;
 import java.util.Optional;

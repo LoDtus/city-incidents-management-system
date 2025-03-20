@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import server.common.ValidationUtils;
-import server.entity.Role;
-import server.entity.User;
+import server.entity.mysql.Role;
+import server.entity.mysql.User;
 import server.service.RoleService;
 import server.service.UserService;
 

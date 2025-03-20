@@ -1,6 +1,6 @@
 package server.service;
 
-import server.entity.User;
+import server.entity.mysql.User;
 
 import java.util.List;
 

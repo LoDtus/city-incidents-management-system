@@ -1,7 +1,7 @@
 package server.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import server.entity.Role;
+import server.entity.mysql.Role;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package server.entity;
+package server.entity.mysql;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -22,6 +22,7 @@ public class Role {
     @Column(name = "id")
     private Integer id;
 
+    // doi sang enum
     @Column(name = "role")
     private String role;
 

@@ -3,7 +3,7 @@ package server.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import server.repository.UserRepository;
-import server.entity.User;
+import server.entity.mysql.User;
 
 import java.util.List;
 import java.util.Optional;

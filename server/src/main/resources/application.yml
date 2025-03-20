@@ -1,0 +1,23 @@
+server.port: 8080
+spring:
+  application.name: server
+  datasource:
+    url: jdbc:mysql://localhost:3308/cims-db
+    username: root
+    password: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    hibernate-ddl-auto: update
+    show-sql: true
+  data.mongodb.uri: mongodb://localhost:27017/cims-db
+  security.user:
+    name: root
+    password: root
+#  logging.level.org.springframework:
+#    security: DEBUG
+#    web:
+#      socket: DEBUG
+#      cors: DEBUG
+#    messaging: DEBUG
+  main.banner-mode: off
+  jackson.serialization.write-dates-as-timestamps: false
