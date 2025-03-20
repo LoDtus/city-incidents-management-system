@@ -1,0 +1,61 @@
+version: '3'
+services:
+  mysql:
+    image: mysql
+    container_name: cims-mysql
+    restart: on-failure
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cims-db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./document-app.sql:/docker-entrypoint-initdb.d/document-app.sql # Chạy script khi container khởi động
+    ports:
+      - "3308:3306"
+
+  mongodb:
+    image: mongodb
+    container_name: cims-mongodb
+    restart: on-failure
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./init.js:/docker-entrypoint-initdb.d/init.js # Chạy script khi container khởi động
+    ports:
+      - "27017:27017"
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: cims-server:0.0.1
+    container_name: cims-server
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./server/.env
+    depends_on:
+      - mysql
+      - mongodb
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: cims-client:0.0.1
+    container_name: cims-client
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./client/.env
+    depends_on:
+      - server
+
+volumes:
+  db_data:

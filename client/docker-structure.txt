@@ -7,3 +7,13 @@ Cũng có 2 stage như ở server:
 		public/
 		next.config.js
 		...
+
+- Với Stage 2:
+	app:
+		package*.json
+		node-modules/ (tạo lại nhưng nhẹ hơn)
+		.next (lưu code mình code sau khi build)
+		public (chứa file tĩnh, mà không cần thông qua quá trình build)
+		next.config.mjs
+
+docker run -p 3000:3000 ....
