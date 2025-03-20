@@ -1,6 +1,6 @@
 import "./globals.css";
 import '@ant-design/v5-patch-for-react-19';
-import AppProvider from "@/lib/common/provider";
+import AppProvider from "@/lib/configs/provider";
 
 export const metadata = {
     title: "CIMS",

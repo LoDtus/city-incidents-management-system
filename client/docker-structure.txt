@@ -1,0 +1,9 @@
+Cũng có 2 stage như ở server:
+- Với Stage 1:
+	app:
+		package*.json
+		node-modules/ (kết quả của npm ci)
+		src/ (từ đây xuống là kết quả sau khi thực hiện cpy . .)
+		public/
+		next.config.js
+		...

@@ -12,10 +12,6 @@ export function setAuth(username, password) {
     auth.password = password;
 }
 
-function createAxiosInstance(baseURL) {
-    return axios.create({ baseURL });
-}
-
 function requiresAuth(method, url) {
     return (( method === "get"  && !endpoints.noAuthGetEndpoints.some(ignore => url.includes(ignore)) )
         ||  ( method === "post" && !endpoints.noAuthPostEndpoints.some(ignore => url.includes(ignore)) )
@@ -60,7 +56,7 @@ function setupResponseInterceptor(instance) {
     );
 }
 
-const instance = createAxiosInstance('http://localhost:8080');
+const instance = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_BASE_URL });
 setupRequestInterceptor(instance);
 setupResponseInterceptor(instance);
 export default instance;
