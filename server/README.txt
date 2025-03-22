@@ -1,1 +1,0 @@
-Chạy thủ công: lưu ý là cần phải có jdk21

@@ -1,10 +1,10 @@
 "use client";
-import Article from "@/features/article/Article";
+import Post from "@/features/post/Post";
 
 export default function Home() {
     return (
         <div>
-            <Article/>
+            <Post/>
         </div>
     );
 };

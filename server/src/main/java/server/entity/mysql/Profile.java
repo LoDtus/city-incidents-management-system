@@ -40,9 +40,6 @@ public class Profile {
     @Column(name = "profile_img")
     private String profileImg;
 
-    @Column(name = "cover_img")
-    private String coverImg;
-
     @Column(name = "phone_number")
     private String phoneNumber;
 

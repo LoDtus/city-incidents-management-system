@@ -140,13 +140,13 @@ export default function NavigationBar() {
                         <span>{t("navigation.support")}</span>
                     </Link>
                 }
-                <Link href={`/${role}/article`} title={t("navigation.article")}
-                    className={curPage.includes("/article")
+                <Link href={`/${role}/post`} title={t("navigation.post")}
+                    className={curPage.includes("/post")
                         ? "item-navigation w-full py-2 px-2 mb-1 rounded-md flex items-center justify-center font-semibold text-blue bg-light-blue duration-200 hover:cursor-pointer"
                         : "item-navigation w-full py-2 px-2 mb-1 rounded-md flex items-center justify-center font-semibold text-gray duration-200 hover:cursor-pointer hover:text-black hover:bg-light-gray active:scale-90"}
                 >
                     <FontAwesomeIcon className="iconNavigation w-5 flex justify-center py-1" icon={faNewspaper}/>
-                    <span>{t("navigation.article")}</span>
+                    <span>{t("navigation.post")}</span>
                 </Link>
                 { ["staff", "manager", "admin"].includes(role) &&
                     <Link href={`/${role}/incident-management`} title={t("navigation.incident-management")}

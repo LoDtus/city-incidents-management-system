@@ -1,15 +1,16 @@
 "use client";
+import './style.css';
 import { getProps } from "@/redux/selectors";
 import Cookies from "js-cookie";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useTranslations } from "use-intl";
-import './style.css'
-import GridLayout from './components/GridLayout';
-import ListLayout from './components/ListLayout';
 import Header from "../shared-ui/Header";
+import GuidelineLayout from "./components/GuidelineLayout";
+import TopPosts from './components/TopPosts';
+import GuidelineEditor from './components/GuidelineEditor';
 
-export default function Article() {
+export default function Post() {
     const t = useTranslations();
     const widthNavBar = useSelector((state) => getProps(state).widthNavBar);
     const role = Cookies.get('role');
@@ -22,7 +23,7 @@ export default function Article() {
     return (
         <div className="flex">
             <div style={{minWidth: `${widthNavBar}px`}}></div>
-            <div className="px-2 py-2">
+            <div className="w-full px-2 py-2 bg-light-blue">
                 <Header
                     title={"Các bài viết"}
                 />
@@ -30,16 +31,8 @@ export default function Article() {
                     filter
                 </div>
 
-                <div className='w-full flex'>
-                    <div className="basis-[12%]">
-                        
-                    </div>
-                    <div className='basis-[76%]'>
-                        <GridLayout/>
-                        {/* <ListLayout/> */}
-                    </div>
-                    <div className="basis-[12%]"></div>
-                </div>
+                <GuidelineEditor/>
+                {/* <GuidelineLayout/> */}
             </div>
         </div>
     );

@@ -3,16 +3,15 @@ Thumbs.db
 *.log
 *.tmp
 *.cache
+*.txt
 .env
 .idea/
 .vscode/
 .git
-.gitignore
-.txt
 
 /client/node_modules/
-/client/package-lock.json
-/client/.txt
+/client/*.txt
+/client/*.md
 
 /server/env.properties
 /server/.env
@@ -20,7 +19,8 @@ Thumbs.db
 /server/.env.development.local
 /server/.env.test.local
 /server/.env.production.local
-/server/.txt
+/server/*.txt
+/server/*.md
 /server/target
 /server/logs
 /server/.idea

@@ -1,17 +1,34 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faBookmark } from '@fortawesome/free-regular-svg-icons'
-import Image from 'next/image'
+"use client";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faBookmark } from '@fortawesome/free-regular-svg-icons';
+import Image from 'next/image';
+import TopPosts from './TopPosts';
+import LatestPosts from './LatestPosts';
 
-function GridLayout() {
-    let listArticle = []
+export default function GuidelineLayout() {
+    let topPosts = []; // 1 ô to, với các ô nhỏ bên trong
+    let latestPosts = []; // 
+    let relevantPosts = [];
+    let videoList = [];
+    let otherPosts = [];
+
+    function openGuideline() {
+
+    }
+
+
     for (let i=0; i<20; i++) {
-        listArticle.push(
+        otherPosts.push(
             <div key={i}
                 className="basis-[25%] p-3">
-                <button className="gridLayout_item flex flex-col justify-center">
-                    <Image
+                <button className="gridLayout_item flex flex-col justify-center duration-200 hover:cursor-pointer"
+                    onClick={() => openGuideline()}
+                >
+                    <div className='gridLayout_poster w-full aspect-square bg-white border border-gray-border rounded-md duration-200'>
+                        {/* <Image
                         className="gridLayout_poster w-full aspect-square rounded-md duration-200"
-                        src="" alt="" />
+                        src="" alt="" /> */}
+                    </div>
                     <span className="text-wrap text-left font-semibold text-2xl underline duration-200">
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit
                     </span>
@@ -20,7 +37,7 @@ function GridLayout() {
                     <div className="w-full flex justify-between items-center">
                         <div className="flex">
                             <div className="flex items-center">
-                                <img
+                                <Image
                                     className="rounded-full w-[35px] aspect-square"
                                     src="" alt="" />
                             </div>
@@ -44,9 +61,19 @@ function GridLayout() {
     }
 
     return (
-        <div className="flex flex-wrap">
-            {listArticle}
+        <div className="w-full flex">
+            <div className="basis-[5%]"></div>
+            <div className='basis-[90%] flex flex-wrap'>
+                <TopPosts
+                    topPosts={topPosts}
+                />
+                <LatestPosts
+                    latestPosts={latestPosts}
+                />
+                {videoList}
+                {otherPosts}
+            </div>
+            <div className="basis-[5%]"></div>
         </div>
-    )
-}
-export default GridLayout;
+    );
+};

@@ -1,4 +1,0 @@
-CIMS: City incident management system (Hệ thống quản lý các sự cố trong thành phố)
-Client:
-    - Các thư viện sử dụng: react-icons, tailwind, react-route-dom v6, redux, react-redux, @reduxjs/toolkit, font-awsome, axios, antd
-    - Sẽ sử dụng: leaflet, ckeditor
