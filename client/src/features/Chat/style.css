@@ -1,15 +1,16 @@
 /* List Chat */
 .listChat::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
+    border: 2px solid white;
 }
 .listChat::-webkit-scrollbar-track {
-    background-color: rgb(241, 241, 241);
+    background-color: white;
     border-radius: 30px;
 }
 .listChat::-webkit-scrollbar-thumb {
     background-color: rgb(193, 193, 193);
     border-radius: 30px;
-    border: 2px solid rgb(241, 241, 241);
+    border: 3px solid white;
 }
 .listChat::-webkit-scrollbar-thumb:hover {
     background-color: rgb(168, 168, 168);
@@ -23,14 +24,14 @@
     width: 12px;
 }
 .listMessage::-webkit-scrollbar-track {
-    background-color: rgb(241, 241, 241);
+    background-color: white;
     border-radius: 30px;
     margin: 2px;
 }
 .listMessage::-webkit-scrollbar-thumb {
     background-color: rgb(193, 193, 193);
     border-radius: 30px;
-    border: 2px solid rgb(241, 241, 241);
+    border: 2px solid white;
 }
 .listMessage::-webkit-scrollbar-thumb:hover {
     background-color: rgb(168, 168, 168);

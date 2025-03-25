@@ -3,8 +3,14 @@ package server.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import server.common.ValidationUtils;
+import server.config.security.JwtService;
+import server.dto.AuthRequest;
+import server.dto.AuthResponse;
 import server.entity.mysql.Role;
 import server.entity.mysql.User;
 import server.service.RoleService;
@@ -18,6 +24,8 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
     private final RoleService roleService;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
     @GetMapping("/get-all")
     public ResponseEntity<List<User>> findAll() {
@@ -42,16 +50,35 @@ public class UserController {
         return ResponseEntity.ok(true);
     }
 
+//    try {
+//        authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                        request.getEmail(),
+//                        request.getPassword()
+//                )
+//        );
+//        System.out.println("Auth");
+//    } catch (BadCredentialsException e) {
+//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
+//    }
+
     @PostMapping("/sign-in")
-    public ResponseEntity<Object> signIn(@RequestBody User user) {
-        User result = userService.findByEmail(user.getEmail());
+    public ResponseEntity<Object> signIn(@RequestBody AuthRequest request) {
+        System.out.println("sign in");
+        User result = userService.findByEmail(request.getEmail());
         if (result == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid email");
         }
-        if (!result.getPassword().equals(user.getPassword())) {
+        if (!result.getPassword().equals(request.getPassword())) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid password");
         }
-        return ResponseEntity.ok(result);
+
+        String token = jwtService.generateToken(result);
+        AuthResponse authResponse = AuthResponse.builder()
+                .token(token)
+                .user(result)
+                .build();
+        return ResponseEntity.ok(authResponse);
     }
 
     @PostMapping("/sign-up")
@@ -75,7 +102,13 @@ public class UserController {
         user.setActive(1);
 
         User userDb = userService.save(user);
-        return ResponseEntity.ok(userDb);
+        String token = jwtService.generateToken(userDb);
+        AuthResponse authResponse = AuthResponse.builder()
+                .token(token)
+                .user(userDb)
+                .build();
+
+        return ResponseEntity.ok(authResponse);
     }
 
     @PutMapping("/update")

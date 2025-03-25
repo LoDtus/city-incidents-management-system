@@ -7,8 +7,8 @@ export default function GuidelineEditor() {
         <div className="flex">
             <div className="basis-[6%]"></div>
             <div className="basis-[88%] flex">
-                <EditorToolbar/>
                 <Editor/>
+                <EditorToolbar/>
             </div>
             <div className="basis-[6%]">
             </div>

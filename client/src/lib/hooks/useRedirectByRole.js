@@ -19,7 +19,8 @@ export default function useRedirectByRole() {
                 router.push('/user/map');
                 break;
             default:
-                router.push('/guest/map');
+                // router.push('/guest/map');
+                router.push('/user/post');
                 break;
         }
     }, [router]);

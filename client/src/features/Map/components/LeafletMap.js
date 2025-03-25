@@ -8,12 +8,9 @@ import MapController from './MapController';
 import ContextMenu from './ContextMenu';
 import AddIncidentBar from "./AddIncidentBar";
 
-// Lấy cái này làm gốc để test
-// Không sử dụng leaflet.glify mà sử dụng L.circle + for + render bằng canvas
-// Đặc điểm: đơn giản, dễ code, nhưng không phù hợp với việc render lớn
 export default function LeafletMap() {
     const defaultCenter = dataMarkers?.[0];
-    const defaultZoom = 11;
+    const defaultZoom = 13;
 
     const mapRef = useRef(null);
     const menuRef = useRef(null);
@@ -30,7 +27,7 @@ export default function LeafletMap() {
     const [ r_Incident, setR_Incident ] = useState(0);
 
     const iconMarker = new L.Icon({
-        iconUrl: './assets/pin.png',
+        iconUrl: '/icons/pin.png',
         iconSize: [32, 32],
         iconAnchor: [15, 32],
         popupAnchor: [0, -32],
@@ -63,8 +60,8 @@ export default function LeafletMap() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const latitude = position.coords.latitude;  // Vĩ độ
-                    const longitude = position.coords.longitude; // Kinh độ
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
                     console.log(`Vị trí hiện tại: Vĩ độ: ${latitude}, Kinh độ: ${longitude}`);
                     mapRef.current.setView([latitude, longitude], 14);
 
@@ -116,10 +113,14 @@ export default function LeafletMap() {
         setLeafletControlWidth(leafletControl.scrollWidth);
         
         mapRef.current.on('contextmenu',
-            (e) => setCoordinates({
-                lat: e.latlng.lat,
-                lng: e.latlng.lng,
-        }));
+            (e) => {
+                console.log(e.latlng.lat, e.latlng.lng);
+                
+                return setCoordinates({
+                    lat: e.latlng.lat,
+                    lng: e.latlng.lng,
+                });
+            });
         mapRef.current.on('zoom',
             () => setZoomLv(mapRef.current.getZoom()
         ));
@@ -134,8 +135,8 @@ export default function LeafletMap() {
                 weight: 0, // Độ dày viền vòng tròn (thay đổi theo ý muốn)
                 opacity: 0, // Độ mờ của viền vòng tròn (1 là không mờ, 0 là hoàn toàn mờ)
                 fillColor: `rgba(${color.join(",")})`, // Màu nền của vòng tròn
-                fillOpacity: 0.4, // Độ mờ của phần nội bộ vòng tròn (1 là không mờ, 0 là hoàn toàn mờ)
-            }).addTo(mapRef.current);
+                fillOpacity: 0.3, // Độ mờ của phần nội bộ vòng tròn (1 là không mờ, 0 là hoàn toàn mờ)
+            })
 
             incident.bindPopup(getTooltip(size));
             incident.on('click', (e) => {
@@ -144,10 +145,10 @@ export default function LeafletMap() {
                 incident.openPopup();
             });
             incident.on('mouseover', () => {
-                incident.setStyle({ opacity: 1, fillOpacity: 0.6 });
+                incident.setStyle({ opacity: 1, fillOpacity: 0.6, 'transition-duration': 200 });
             });
             incident.on('mouseout', () => {
-                incident.setStyle({ opacity: 0, fillOpacity: 0.4 });
+                incident.setStyle({ opacity: 0, fillOpacity: 0.3, 'transition-duration': 200 });
             });
 
             circles.push(incident);
@@ -186,11 +187,9 @@ export default function LeafletMap() {
     useEffect(() => {
         if (isAddLocation) {
             console.log(1);
-            
-            document.body.style.cursor = `url('./assets/pin.png'), auto`;
+            document.body.style.cursor = `url('./icons/pin.png'), auto`;
         } else {
             console.log(2);
-            
             document.body.style.cursor = 'pointer';
         }
     }, [isAddLocation]);
@@ -210,11 +209,13 @@ export default function LeafletMap() {
             incidentList.forEach((incident) => {
                 const size = incident.options.radius;
                 if (zoomLv < 12 && size < 1000) {
-                    // incident.setStyle({ opacity: 0, fillOpacity: 0 });
+                    incident.setStyle({ opacity: 0, fillOpacity: 0 });
                     incident.remove();
                 } else if (zoomLv >= 10) { // cần thêm đk để tránh addTo 2 lần
-                    incident.addTo(mapRef.current);
                     incident.setStyle({ opacity: 1, fillOpacity: 0.4 });
+                    // if (!mapRef.current.hasLayer(incident)) {
+                    //     incident.addTo(mapRef.current);
+                    // }
                 }
             });
         }

@@ -18,7 +18,7 @@ function MapLayout() {
             <div className="h-[100vh] flex flex-col relative">
                 <SearchBar/>
                 <div className="grow">
-                    <PopupAddIncident/>
+                    {/* <PopupAddIncident/> */}
                     {/* <PopupIncidentNotification/> */}
                     {/* <PopupIncidentSummary/> */}
                     {/* <PopupFilter/> */}

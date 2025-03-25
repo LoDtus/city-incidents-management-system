@@ -1,3 +1,4 @@
+"use client";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsis, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import { useRef, useState, useEffect } from 'react'
@@ -43,7 +44,7 @@ export default function ListChatRoom() {
             className="flex items-center rounded-md py-2 px-3 mb-1 bg-light-blue duration-200">
             <img
                 className='h-[60px] aspect-square rounded-full mr-2'
-                src="./assets/exp-ava-1.jpg" alt="" />
+                src="https://i.pinimg.com/736x/71/2d/58/712d5802368e0a7cafc9f530e328daf4.jpg" alt="" />
             <div className="">
                 <div className="flex items-center">
                     <div className="grow font-semibold text-left">
@@ -72,7 +73,7 @@ export default function ListChatRoom() {
                 duration-200 hover:bg-light-gray active:scale-95">
                 <img
                     className='h-[60px] aspect-square rounded-full mr-2'
-                    src="./assets/exp-ava-1.jpg" alt="" />
+                    src="https://i.pinimg.com/736x/71/2d/58/712d5802368e0a7cafc9f530e328daf4.jpg" alt="" />
                 <div className="">
                     <div className="flex items-center">
                         <div className="grow font-semibold text-left">

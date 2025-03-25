@@ -9,6 +9,7 @@ import Header from "../shared-ui/Header";
 import GuidelineLayout from "./components/GuidelineLayout";
 import TopPosts from './components/TopPosts';
 import GuidelineEditor from './components/GuidelineEditor';
+import GuidelineDetails from './components/GuidelineDetails';
 
 export default function Post() {
     const t = useTranslations();
@@ -21,9 +22,9 @@ export default function Post() {
     // Hướng dẫn
 
     return (
-        <div className="flex">
+        <div className="flex bg-white-background w-full h-full">
             <div style={{minWidth: `${widthNavBar}px`}}></div>
-            <div className="w-full px-2 py-2 bg-light-blue">
+            <div className="w-full px-2 py-2">
                 <Header
                     title={"Các bài viết"}
                 />
@@ -31,8 +32,9 @@ export default function Post() {
                     filter
                 </div>
 
-                <GuidelineEditor/>
+                {/* <GuidelineEditor/> */}
                 {/* <GuidelineLayout/> */}
+                <GuidelineDetails/>
             </div>
         </div>
     );
